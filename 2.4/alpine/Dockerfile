@@ -9,8 +9,8 @@ RUN set -x \
 # https://git.alpinelinux.org/cgit/aports/tree/main/lighttpd/lighttpd.pre-install?h=v3.14.0
 # https://git.alpinelinux.org/cgit/aports/tree/main/nginx/nginx.pre-install?h=v3.14.0
 
-ENV HTTPD_PREFIX /usr/local/apache2
-ENV PATH $HTTPD_PREFIX/bin:$PATH
+ENV HTTPD_PREFIX=/usr/local/apache2
+ENV PATH=$HTTPD_PREFIX/bin:$PATH
 RUN mkdir -p "$HTTPD_PREFIX" \
 	&& chown www-data:www-data "$HTTPD_PREFIX"
 WORKDIR $HTTPD_PREFIX
@@ -27,8 +27,8 @@ RUN set -eux; \
 		perl \
 	;
 
-ENV HTTPD_VERSION 2.4.65
-ENV HTTPD_SHA256 58b8be97d9940ec17f7656c0c6b9f41b618aac468b894b534148e3296c53b8b3
+ENV HTTPD_VERSION=2.4.65
+ENV HTTPD_SHA256=58b8be97d9940ec17f7656c0c6b9f41b618aac468b894b534148e3296c53b8b3
 
 # https://httpd.apache.org/security/vulnerabilities_24.html
 ENV HTTPD_PATCHES=""
@@ -45,24 +45,17 @@ RUN set -eux; \
 		gnupg \
 		libc-dev \
 		patch \
-		# mod_md
 		curl-dev \
 		jansson-dev \
-		# mod_proxy_html mod_xml2enc
 		libxml2-dev \
-		# mod_lua
 		lua-dev \
 		make \
-		# mod_http2
 		nghttp2-dev \
-		# mod_session_crypto
 		openssl \
 		openssl-dev \
 		pcre-dev \
 		tar \
-		# mod_deflate
 		zlib-dev \
-		# mod_brotli
 		brotli-dev \
 	; \
 	\

@@ -3,8 +3,8 @@ FROM debian:trixie-slim
 # add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
 #RUN groupadd -r www-data && useradd -r --create-home -g www-data www-data
 
-ENV HTTPD_PREFIX /usr/local/apache2
-ENV PATH $HTTPD_PREFIX/bin:$PATH
+ENV HTTPD_PREFIX=/usr/local/apache2
+ENV PATH=$HTTPD_PREFIX/bin:$PATH
 RUN mkdir -p "$HTTPD_PREFIX" \
 	&& chown www-data:www-data "$HTTPD_PREFIX"
 WORKDIR $HTTPD_PREFIX
@@ -21,8 +21,8 @@ RUN set -eux; \
 	; \
 	apt-get dist-clean
 
-ENV HTTPD_VERSION 2.4.65
-ENV HTTPD_SHA256 58b8be97d9940ec17f7656c0c6b9f41b618aac468b894b534148e3296c53b8b3
+ENV HTTPD_VERSION=2.4.65
+ENV HTTPD_SHA256=58b8be97d9940ec17f7656c0c6b9f41b618aac468b894b534148e3296c53b8b3
 
 # https://httpd.apache.org/security/vulnerabilities_24.html
 ENV HTTPD_PATCHES=""
