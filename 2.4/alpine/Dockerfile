@@ -18,7 +18,7 @@ WORKDIR $HTTPD_PREFIX
 # install httpd runtime dependencies
 # https://httpd.apache.org/docs/2.4/install.html#requirements
 RUN set -eux; \
-    && apk upgrade --no-cache \
+    apk upgrade --no-cache \
     && apk add --no-cache \
 		apr \
 		apr-util \
