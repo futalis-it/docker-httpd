@@ -40,8 +40,8 @@ for version in "${versions[@]}"; do
 	fi
 
 	sed -ri \
-		-e 's/^(ENV HTTPD_VERSION) .*/\1 '"$fullVersion"'/' \
-		-e 's/^(ENV HTTPD_SHA256) .*/\1 '"$sha256"'/' \
+		-e 's/^(ENV HTTPD_VERSION)=.*/\1='"$fullVersion"'/' \
+		-e 's/^(ENV HTTPD_SHA256)=.*/\1='"$sha256"'/' \
 		-e 's/^(ENV HTTPD_PATCHES=").*(")$/\1'"${patches[*]}"'\2/' \
 		"$version/Dockerfile" "$version"/*/Dockerfile
 done
